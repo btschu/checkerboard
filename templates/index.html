@@ -8,6 +8,19 @@
     <title>Checkerboard</title>
 </head>
 <body>
-    
+    <h1>**Checkerboard**</h1>
+    <table id="wrapper">
+    {% for i in range(num1): %}
+        <tr>
+            {% for j in range(num2): %}
+                {% if (i%2 == 0 and j%2 == 0) or (i%2 != 0 and j%2 != 0) %}
+                    <td class="color1" style="background-color: {{color1}}"></td>
+                {% else %}
+                    <td class="color2" style="background-color: {{color2}}"></td>
+                {% endif %}
+            {% endfor %}
+        </tr>
+    {% endfor %}
+    </table>
 </body>
 </html>

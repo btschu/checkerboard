@@ -2,22 +2,27 @@ from flask import Flask, render_template
 
 app = Flask(__name__)
 
+# 8x8 checkerboard
 @app.route('/')
 def index():
-    return render_template("index.html")
+    return render_template("index.html", num1 = 8, num2 = 8)
 
-@app.route('/play')
-def play():
-    return render_template("play.html")
+# 8x4 checkerboard
+@app.route('/4')
+def changeSize():
+    return render_template("index.html", num1 = 4, num2 = 8)
 
-@app.route('/play/<int:boxNum>')
-def play_num(boxNum):
-    return render_template('play.html', boxNum=boxNum)
+# specify the size of the checkerboard
+@app.route('/<int:num1>/<int:num2>')
+def specifySize(num1, num2):
+    return render_template('index.html', num1 = num1, num2 = num2)
 
-@app.route('/play/<int:boxNum>/<color>')
-def play_color(boxNum, color):
-    return render_template('play.html', color=color, boxNum=boxNum,)
+# specify size and color of checkerboard
+@app.route('/<int:num1>/<int:num2>/<color1>/<color2>')
+def specifySizeColor(num1, num2, color1, color2):
+    return render_template('index.html', num1 = num1, num2 = num2, color1 = color1, color2 = color2 )
 
+# no page found
 @app.errorhandler(404)
 def pageNotFound(missing):
     return "Sorry! No response. Try again."
