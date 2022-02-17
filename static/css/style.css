@@ -35,3 +35,18 @@ table tr td {
 .color2 {
     background-color: black;
 }
+
+
+/* Second time solution
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+tr td {
+    height: 50px;
+    width: 50px;
+}
+ */
